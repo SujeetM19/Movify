@@ -1,10 +1,9 @@
 import React from 'react'
-import "./Profile.css"
 
-const profile = () => {
+const Profile = () => {
   return (
-    <div className='profile'>profile</div>
+    <div className='profile'>Profile</div>
   )
 }
 
-export default profile
+export default Profile
