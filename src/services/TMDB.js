@@ -1,53 +1,35 @@
-// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-// const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
-// const page = 1; //dummy variable
-
-// export const tmdbApi = createApi({
-//   reducerPath: 'tmdbApi',
-//   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3' }),
-//   endpoints: (builder) => ({
-//     /*Get Movies by [Type]*/
-//     getMovies: builder.query({
-//       query: () => `/movie/popular?page=${page}&api_key=${tmdbApiKey}`,
-//     }),
-//   }),
-// });
-
-// export const {
-//   useGetMoviesQuery,
-// } = tmdbApi;/
-
-// function tmdbApi() {
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
   
-//   const [loading, setLoading] = useState(false);
-//   const [posts, setPosts] = useState([]);
+export default function movieData(url) {
+  
+    const [loading, setLoading] = useState(false);
+    let [posts, setPosts] = useState([]);
+    const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
+    const page = 1; //dummy variable
+    useEffect(() => {
+        const loadPost = async () => {
+            
+            setLoading(true);
+            const response = await axios.get(url);
 
-//   useEffect(() => {
-//       const loadPost = async () => {
+            if(typeof(response) != 'undefined'){
+                setPosts(response.data);
+            }
+            
 
-//           // Till the data is fetch using API 
-//           // the Loading page will show.
-//           setLoading(true);
+            console.log(typeof(posts));
+            console.log(posts);
 
-//           // Await make wait until that 
-//           // promise settles and return its result
-//           const response = await axios.get(
-//           "https://api.themoviedb.org/3//movie/popular?&api_key=5cec147b40afbcc165e384271f91f485");
+            setLoading(false);
+        }
 
-//           // After fetching data stored it in posts state.
-//           setPosts(response.data);
+        loadPost();
+    }, []);
+    
+    return {posts, loading};
 
-//           // Closed the loading page
-//           setLoading(false);
-//       }
+}
 
-//       // Call the function
-//       loadPost();
-//   }, []);
 
-// }
-
-// export const {
-//   useGetMoviesQuery,
-// } = tmdbApi;
+ 

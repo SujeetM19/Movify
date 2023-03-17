@@ -17,7 +17,7 @@ const App = () => {
     <div className={classes.root}>
       <CssBaseline />
       <NavBar />
-      <main className={classes.content}>
+      {/* <main className={classes.content}>
         <div className={classes.toolbar} />
         <Routes>
             <Route exact path = "/movie/:id" element= {<MovieInformation/>} />   
@@ -26,7 +26,7 @@ const App = () => {
             <Route exact path = "/movies" element= {<Movies/>} />
             <Route path = "/"  element= {<Movies/>}/>
         </Routes>
-      </main>
+      </main> */}
       </div>
     
   );

@@ -51,7 +51,7 @@ const NavBar = () => {
 
           {!isMobile && 'Search...'}
 
-          <div>
+          <div> 
             {!isAuthenticated ? (
               <Button color="inherit" onClick={() => {}}>
                     Login &nbsp; <AccountCircle />
@@ -86,7 +86,7 @@ const NavBar = () => {
                 {isMobile ? (
                   <Drawer
                     varient='temporary'
-                    anchor = 'right'
+                    anchor = 'left'
                     open = {mobileOpen}
                     onClose = {() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
                     classes = {{paper: classes.drawerPaper}}
@@ -97,14 +97,19 @@ const NavBar = () => {
 
                   </Drawer>
                 ) : (
-                    <Drawer classes= {{paper: classes.drawerPaper}} varient="permanent">
-                      <Sidebar setMobileOpen = {setMobileOpen}/>
-                    </Drawer>
+                    <Drawer
+                        variant="permanent"
+                        anchor="left"
+                        classes = {{paper: classes.drawerPaper}}
+
+                      >
+                         <Sidebar setMobileOpen = {setMobileOpen}/>
+                      </Drawer>
                 )}
             </nav>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default NavBar;
