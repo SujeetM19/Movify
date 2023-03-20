@@ -7,7 +7,7 @@ import Actors from "./Actors/Actors";
 import Movies from "./Movies/Movies";
 import NavBar from "./NavBar/NavBar"
 // import "./App.css"
-import useStyles from './styles';
+import useStyles from './styles'; 
 
 //routing for pages to create a specific routing
 const App = () => {
@@ -23,8 +23,8 @@ const App = () => {
             <Route exact path = "/movie/:id" element= {<MovieInformation/>} />   
             <Route exact path = "/actors/:id" element= {<Actors/>} />
             <Route exact path = "/profile/:id" element= {<Profile/>} />
-            <Route exact path = "/movies" element= {<Movies/>} />
-            <Route path = "/"  element= {<Movies/>}/>
+            <Route exact path = "/movies" element= {<Movies url=  {'https://api.themoviedb.org/3/movie/popular?page=1&api_key=5cec147b40afbcc165e384271f91f485' }/> } />
+            <Route exact path = "/" element= {<Movies url=  {'https://api.themoviedb.org/3/movie/popular?page=1&api_key=5cec147b40afbcc165e384271f91f485' }/> } />
         </Routes>
       </main>
       </div>

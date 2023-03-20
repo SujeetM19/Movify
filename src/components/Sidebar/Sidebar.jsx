@@ -50,7 +50,7 @@ function Sidebar({ setMobileOpen }) {
     );
   }, []);
 
-  console.log("data", posts);
+  // console.log("data", posts);
 
   return (
     <>
