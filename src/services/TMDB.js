@@ -1,35 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
-  
-export default function movieData(url) {
-  
-    const [loading, setLoading] = useState(false);
-    let [posts, setPosts] = useState([]);
-    const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
-    const page = 1; //dummy variable
-    useEffect(() => {
-        const loadPost = async () => {
-            
-            setLoading(true);
-            const response = await axios.get(url);
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-            if(typeof(response) != 'undefined'){
-                setPosts(response.data);
-            }
-            
+export default function movieData() {
+  const [loading, setLoading] = useState(false);
+  const [url, setUrl] = useState("");
+  let [posts, setPosts] = useState(null);
+  const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
+  const page = 1; //dummy variable
 
-            console.log(typeof(posts));
-            console.log(posts);
+  const loadPost = async () => {
+    setLoading(true);
+    const response = await axios.get(url);
 
-            setLoading(false);
-        }
+    if (typeof response != "undefined") {
+      setPosts(response.data);
+    }
 
-        loadPost();
-    }, []);
-    
-    return {posts, loading};
+    setLoading(false);
+  };
 
+  useEffect(() => {
+    if (url) {
+      loadPost();
+    }
+  }, [url]);
+
+  return { posts, loading, setUrl };
 }
-
-
- 
