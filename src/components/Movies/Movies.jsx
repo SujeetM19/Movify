@@ -13,15 +13,15 @@ import fetchData from "../../services/TMDB";
 // import React, { useState, useEffect } from 'react'
 import axios from "axios";
 
-function Movies({url}) {
+function Movies() {
   const classes = useStyles();
   const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
   const page = 1;
-  const { posts, loading, setUrl} = fetchData(url);
+  const { posts, loading, setUrl} = fetchData();
 
   console.log('priting');
   useEffect(()=>{
-    setUrl(url);
+    setUrl(`https://api.themoviedb.org/3/movie/popular?page=${page}&api_key=${tmdbApiKey}`);
   }, [])
 
   console.log(posts);
